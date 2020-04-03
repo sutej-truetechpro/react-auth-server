@@ -30,7 +30,7 @@ module.exports = class AuthController {
 
         // check email exist
 
-        query = `SELECT * FROM users where email = '${validated.email}'`;
+        query = `SELECT * FROM users where email = '${validated.email}' Or phone = '${validated.phone}'`;
         con.query(query, function (err, result) {
             if (err) {
                 throw err;
@@ -57,7 +57,7 @@ module.exports = class AuthController {
                 });
             } else {
                 return res.status(422).json({
-                    message: "Email already in use!",
+                    message: "Email or Mobile already in use!",
                     errors: {email: ["Email already in use!"]}
                 });
             }
