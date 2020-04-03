@@ -105,4 +105,23 @@ module.exports = class AuthController {
             }
         });
     }
+
+    static verifyOtp(req, res) {
+        let query = `SELECT * FROM users where email = '${req.body.email}' AND otp = '${req.body.otp}'`;
+        con.query(query, function (err, result) {
+            if (err) {
+                throw err;
+            }
+            if (result.length === 1) {
+                return res.json({
+                    message: "Logged in successfully",
+                });
+            } else {
+                return res.status(422).json({
+                    message: "Otp is incorrect, please try again.",
+                });
+            }
+        });
+    }
+
 };
