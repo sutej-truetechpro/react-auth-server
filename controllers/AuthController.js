@@ -28,6 +28,8 @@ module.exports = class AuthController {
         }
         const validated = validator.validated;
 
+        // TODO: create Hash For password
+
         // check email exist
 
         query = `SELECT * FROM users where email = '${validated.email}' Or phone = '${validated.phone}'`;
