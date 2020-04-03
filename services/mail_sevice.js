@@ -7,9 +7,9 @@ module.exports = class MailService {
         let html = fs.readFileSync(__dirname + '/../resources/authentication_mail_template.html', "utf8");
         let template = handlebars.compile(html);
         return Transporter.sendMail({
-            from: '"Fred Foo 👻" <foo@example.com>', // sender address
+            from: 'sutej@truetechpro.com', // sender address
             to: user.email, // list of receivers
-            subject: "Hello ✔", // Subject line
+            subject: "OTP", // Subject line
             text: "Hello world?", // plain text body
             html: template(user)
         }).then((r) => {
